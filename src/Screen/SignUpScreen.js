@@ -13,7 +13,7 @@ export default function SignUpScreen({ navigation, route }) {
 
     return (
         <View style={styles.container}>
-            <ScrollView showsVerticalScrollIndicator={false}>
+            <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{flex: 1, paddingVertical: 0}}>
                 <View style={{ flex: 0.32, position: "relative", overflow: "hidden" }}>
                     <View style={styles.topRectangle}>
                         <TouchableOpacity style={styles.backNavigator} onPress={() => navigation.navigate(previousRoute)}>

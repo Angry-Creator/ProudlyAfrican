@@ -32,14 +32,14 @@ export default function LoginScreen({ navigation }) {
                     <View style={styles.subContentContainer}>
                         {/* Login Button */}
                         <AppButton text="Login" onPressAction={() => Alert.alert("Login Successfully", "User has successfully logged in!", [{
-                            text: "Ok", style: "default", onPress: () => navigation.navigate("HomeScreen1", {"previousScreen":"LoginScreen"})
+                            text: "Ok", style: "default", onPress: () => navigation.navigate("HomeScreen1", { "previousScreen": "LoginScreen" })
                         }])} />
 
                         {/* OR text */}
                         <Text style={styles.orText}>OR</Text>
 
                         {/* Sign Up Button */}
-                        <AppButton text="Sign Up" mode="light" onPressAction={() => navigation.navigate("SignUpScreen", "LoginScreen")} />
+                        <AppButton text="Sign Up" mode="light" onPressAction={() => navigation.navigate("SignUpScreen", { "previousScreen": "LoginScreen" })} />
                     </View>
                 </ScrollView>
             </View>
