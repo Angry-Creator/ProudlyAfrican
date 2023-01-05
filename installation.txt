@@ -1,0 +1,10 @@
+//For Navigator
+npm install @react-navigation/native
+npx expo install react-native-screens react-native-safe-area-context
+npm install @react-navigation/native-stack
+
+//Country Picker
+npm i react-native-country-picker-modal
+
+//For Building the expo app to andriod or ios
+npm install -g eas-cli
