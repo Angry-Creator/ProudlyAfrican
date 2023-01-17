@@ -10,4 +10,5 @@ module.exports = {
     "header" : "#000000",
     "ink" : "#003559",
     "shadow": "black",
+    "danger" : "red",
 }

@@ -1,147 +1,14 @@
-import { StyleSheet, Text, View, Image, Platform, StatusBar, ScrollView } from "react-native";
+import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import AppButton from "../Components/buttons/AppButton";
 import CountryCard from "../Components/cards/CountryCard";
 import AppColors from "../Config/AppColors";
+import AppData from "../Config/Data";
 
 export default function HomeScreen1({ navigation }) {
-
-    const data = {
-        "Nigeria": {
-            "country": "Nigeria",
-            "housing": {
-                "posts": {
-                    "Chidera": "This House Looks Cool"
-                },
-            },
-            "shopping": {
-                "posts": {
-                    "Ruth": "I love shopping"
-                },
-            },
-            "entertainment": {
-                "posts": {
-                    "David": "The movie was awesome"
-                },
-            },
-            "visitor": {
-                "posts": {
-                    "Daniel": "I love visiting houses, cause I broke!"
-                },
-            },
-            "relocation": {
-                "posts": {
-                    "Homeless": "Just as the name sounds, that's how I feel"
-                },
-            },
-            "services": {
-                "posts": {
-                    "Hustler": "I love hustling"
-                },
-            }
-        },
-        "Ghana": {
-            "country": "Ghana",
-            "housing": {
-                "posts": {
-                    "Ghana Guy": "This House Looks Cool"
-                },
-            },
-            "shopping": {
-                "posts": {
-                    "Ghana Girl": "I love shopping"
-                },
-            },
-            "entertainment": {
-                "posts": {
-                    "Ghana Boy": "The movie was awesome"
-                },
-            },
-            "visitor": {
-                "posts": {
-                    "Ghana Lady": "I love visiting houses, cause I broke!"
-                },
-            },
-            "relocation": {
-                "posts": {
-                    "Ghanaless": "Just as the name sounds, that's how I feel"
-                },
-            },
-            "services": {
-                "posts": {
-                    "Ghana Hustler": "I love hustling"
-                },
-            }
-        },
-        "Togo": {
-            "country": "Togo",
-            "housing": {
-                "posts": {
-                    "Togo Guy": "This House Looks Cool"
-                },
-            },
-            "shopping": {
-                "posts": {
-                    "Togo Girl": "I love shopping"
-                },
-            },
-            "entertainment": {
-                "posts": {
-                    "Togo Boy": "The movie was awesome"
-                },
-            },
-            "visitor": {
-                "posts": {
-                    "Togo Lady": "I love visiting houses, cause I broke!"
-                },
-            },
-            "relocation": {
-                "posts": {
-                    "TogoLess": "Just as the name sounds, that's how I feel"
-                },
-            },
-            "services": {
-                "posts": {
-                    "Togo Hustler": "I love hustling"
-                },
-            }
-        },
-        "Mali": {
-            "country": "Mali",
-            "housing": {
-                "posts": {
-                    "Mali Guy": "This House Looks Cool"
-                },
-            },
-            "shopping": {
-                "posts": {
-                    "Mali Girl": "I love shopping"
-                },
-            },
-            "entertainment": {
-                "posts": {
-                    "Mali Boy": "The movie was awesome"
-                },
-            },
-            "visitor": {
-                "posts": {
-                    "Mali Lady": "I love visiting houses, cause I broke!"
-                },
-            },
-            "relocation": {
-                "posts": {
-                    "Maliless": "Just as the name sounds, that's how I feel"
-                },
-            },
-            "services": {
-                "posts": {
-                    "Mali Hustler": "I love hustling"
-                },
-            }
-        }
-    }
-
+    const data = AppData.groups;
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <ScrollView contentContainerStyle={{ position: "relative", flex: 1, alignItems: "center", }}>
                 {/* Profile Image */}
                 <View style={styles.imageContainer}>
@@ -151,20 +18,20 @@ export default function HomeScreen1({ navigation }) {
                 <Text style={styles.text}>Country of Interest</Text>
 
                 <View style={styles.countryCardsContainer}>
-                    <CountryCard text={"Nigeria"} onPressAction={() => navigation.navigate("HomeScreen2", {"previousScreen": "HomeScreen1", "data": data.Nigeria})} />
-                    <CountryCard text={"Ghana"} onPressAction={() => navigation.navigate("HomeScreen2", {"previousScreen": "HomeScreen1", "data": data.Ghana})}/>
+                    <CountryCard text={"Nigeria"} onPressAction={() => navigation.navigate("HomeScreen2", { "data": data.Nigeria })} />
+                    <CountryCard text={"Ghana"} onPressAction={() => navigation.navigate("HomeScreen2", { "data": data.Ghana })} />
                 </View>
 
                 <View style={styles.countryCardsContainer}>
-                    <CountryCard text={"Togo"} onPressAction={() => navigation.navigate("HomeScreen2", {"previousScreen": "HomeScreen1", "data": data.Togo})}/>
-                    <CountryCard text={"Mali"} onPressAction={() => navigation.navigate("HomeScreen2", {"previousScreen": "HomeScreen1", "data": data.Mali})}/>
+                    <CountryCard text={"Togo"} onPressAction={() => navigation.navigate("HomeScreen2", { "data": data.Togo })} />
+                    <CountryCard text={"Mali"} onPressAction={() => navigation.navigate("HomeScreen2", { "data": data.Mali })} />
                 </View>
 
                 <View style={{ position: "absolute", bottom: 10, width: "100%", paddingHorizontal: 20, paddingVertical: 10, }}>
                     <AppButton text="Add More" mode="light" onPressAction={() => alert("Coming Soon!")} />
                 </View>
             </ScrollView>
-        </View>
+        </SafeAreaView>
     )
 }
 
@@ -172,7 +39,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: AppColors.backgroundColor,
-        paddingTop: Platform.OS == 'android' ? StatusBar.currentHeight : 0,
     },
     imageContainer: {
         height: 150,

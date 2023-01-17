@@ -1,15 +1,16 @@
-import { View, StyleSheet, Platform, StatusBar, TouchableOpacity, ScrollView, Text, Alert } from "react-native";
+import { View, StyleSheet, TouchableOpacity, ScrollView, Text, Alert } from "react-native";
 import FormTextInput from "../Components/LoginForm/FormTextInput";
 import FormPasswordInput from "../Components/LoginForm/FormPasswordInput";
 import AppButton from "../Components/buttons/AppButton";
 import { useState } from "react";
 import AppColors from "../Config/AppColors";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function LoginScreen({ navigation }) {
     const [rememberMe, setRememberMe] = useState(false);
 
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             {/* Welcome Back Text */}
             <Text style={styles.createAccountText}>Welcome User</Text>
             <View style={styles.contentContainer}>
@@ -32,18 +33,18 @@ export default function LoginScreen({ navigation }) {
                     <View style={styles.subContentContainer}>
                         {/* Login Button */}
                         <AppButton text="Login" onPressAction={() => Alert.alert("Login Successfully", "User has successfully logged in!", [{
-                            text: "Ok", style: "default", onPress: () => navigation.navigate("HomeScreen1", { "previousScreen": "LoginScreen" })
+                            text: "Ok", style: "default", onPress: () => navigation.navigate("Tabs")
                         }])} />
 
                         {/* OR text */}
                         <Text style={styles.orText}>OR</Text>
 
                         {/* Sign Up Button */}
-                        <AppButton text="Sign Up" mode="light" onPressAction={() => navigation.navigate("SignUpScreen", { "previousScreen": "LoginScreen" })} />
+                        <AppButton text="Sign Up" mode="light" onPressAction={() => navigation.navigate("SignUpScreen")} />
                     </View>
                 </ScrollView>
             </View>
-        </View>
+        </SafeAreaView>
     )
 }
 
@@ -51,7 +52,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: AppColors.backgroundColor,
-        paddingTop: (Platform.OS === "android") ? StatusBar.currentHeight : 0,
         paddingHorizontal: 10,
         paddingBottom: 10,
     },

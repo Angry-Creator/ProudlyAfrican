@@ -1,11 +1,12 @@
 import { StyleSheet, View, Text, Image } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import AppButton from "../Components/buttons/AppButton";
 import AppColors from "../Config/AppColors";
 
 export default function UserScreen({ navigation }) {
 
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <View style={styles.imageContainer}>
                 <Image source={require("../../assets/images/landing1.png")} style={styles.image} resizeMode="cover" />
             </View>
@@ -15,10 +16,10 @@ export default function UserScreen({ navigation }) {
                     <AppButton text="Login" onPressAction={() => navigation.navigate("LoginScreen")} />
                 </View>
                 <View style={{ width: "80%", marginTop: 50, }}>
-                    <AppButton text="Sign Up" mode="light" onPressAction={() => navigation.navigate("SignUpScreen", { "previousScreen": "UserScreen" })} />
+                    <AppButton text="Sign Up" mode="light" onPressAction={() => navigation.navigate("SignUpScreen")} />
                 </View>
             </View>
-        </View>
+        </SafeAreaView>
     )
 }
 

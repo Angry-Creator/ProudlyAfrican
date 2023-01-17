@@ -1,4 +1,5 @@
-import { View, StyleSheet, Platform, StatusBar, TouchableOpacity, Image, ScrollView, Text, Alert } from "react-native";
+import { View, StyleSheet, TouchableOpacity, Image, ScrollView, Text, Alert } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { Feather, Ionicons } from "@expo/vector-icons/";
 import FormTextInput from "../Components/SignUpForm/FormTextInput";
 import FormTelInput from "../Components/SignUpForm/FormTelInput";
@@ -8,15 +9,14 @@ import AppButton from "../Components/buttons/AppButton";
 import AppColors from "../Config/AppColors";
 
 export default function SignUpScreen({ navigation, route }) {
-    const previousRoute = route.params.previousScreen;
     const [rememberMe, setRememberMe] = useState(true);
 
     return (
-        <View style={styles.container}>
-            <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{flex: 1, paddingVertical: 0}}>
+        <SafeAreaView style={styles.container}>
+            <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ flex: 1 }}>
                 <View style={{ flex: 0.32, position: "relative", overflow: "hidden" }}>
                     <View style={styles.topRectangle}>
-                        <TouchableOpacity style={styles.backNavigator} onPress={() => navigation.navigate(previousRoute)}>
+                        <TouchableOpacity style={styles.backNavigator} onPress={() => navigation.goBack()}>
                             <Ionicons name="arrow-back" size={30} color={AppColors.light} />
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.cameraContainer}>
@@ -40,8 +40,8 @@ export default function SignUpScreen({ navigation, route }) {
                         </TouchableOpacity>
                         <View style={{ paddingHorizontal: 40, marginVertical: 10, }}>
                             <AppButton text="Create Account" mode="light" onPressAction={() => Alert.alert("Sign Up Successfully", "User has successfully signed up!", [{
-                            text: "Ok", style: "default", onPress: () => navigation.navigate("HomeScreen1", {"previousScreen": "Sign Up Screen"})
-                        }])} />
+                                text: "Ok", style: "default", onPress: () => navigation.navigate("Tabs", { "previousScreen": "SignUpScreen" })
+                            }])} />
                         </View>
                         <View style={styles.iconContainer}>
                             <TouchableOpacity style={{ borderRadius: 15, overflow: "hidden" }}>
@@ -57,7 +57,7 @@ export default function SignUpScreen({ navigation, route }) {
                     </View>
                 </View>
             </ScrollView>
-        </View>
+        </SafeAreaView>
     )
 }
 
@@ -65,7 +65,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: AppColors.light,
-        paddingTop: (Platform.OS === "android") ? StatusBar.currentHeight : 0,
     },
     topRectangle: {
         width: "100%",
