@@ -19,7 +19,8 @@
       }
     },
     "production": {
-      "node": "18.12.1"
+      "node": "18.12.1",
+      "autoIncrement" : true
     }
   },
   "submit": {
