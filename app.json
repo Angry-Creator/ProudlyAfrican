@@ -26,7 +26,8 @@
         "foregroundImage": "./assets/images/icon.png",
         "backgroundColor": "#000000"
       },
-      "package": "com.angrycreator.ProudlyAfrican"
+      "package": "com.angrycreator.ProudlyAfrican",
+      "versionCode": 2
     },
     "web": {
       "favicon": "./assets/favicon.png"
